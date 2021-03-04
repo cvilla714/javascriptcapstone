@@ -1,3 +1,5 @@
+import Phaser from "phaser";
+
 let game;
 
 import player from "./images/player.png";
