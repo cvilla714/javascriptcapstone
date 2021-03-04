@@ -8,6 +8,10 @@ if (process.env.NODE_ENV === "production") {
 module.exports = {
   mode: mode,
 
+  output: {
+    assetModuleFilename: "images/[hash][ext][query]",
+  },
+
   module: {
     rules: [
       {
