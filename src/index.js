@@ -1,5 +1,3 @@
 import "./index.scss";
-
-alert("you made it");
-
-console.log("if you add two numbers you will get a bigger one");
+import "./game.js";
+import "./phaser.min.js";
