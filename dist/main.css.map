@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack://drum-machine/./src/index.scss"],"names":[],"mappings":"AAAA,KACE,SACA,yBACA,Y","file":"main.css","sourcesContent":["body {\n  margin: 0;\n  background-color: cadetblue;\n  color: green;\n}\n"],"sourceRoot":""}
+{"version":3,"sources":["webpack://drum-machine/./src/index.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;AACF,C","file":"main.css","sourcesContent":["body {\n  margin: 0;\n  background-color: cadetblue;\n  color: green;\n}\n"],"sourceRoot":""}
