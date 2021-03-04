@@ -1,10 +1,10 @@
 let game;
 
-import player from ".images/player.png";
-import platform from ".images/platform.png";
-import coin from ".images/coin.png";
-import fire from ".images/fire.png";
-import mountain from ".images/mountain.png";
+import player from "./images/player.png";
+import platform from "./images/platform.png";
+import coin from "./images/coin.png";
+import fire from "./images/fire.png";
+import mountain from "./images/mountain.png";
 
 // global game options
 let gameOptions = {
