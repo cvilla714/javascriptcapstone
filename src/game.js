@@ -1,12 +1,12 @@
 import Phaser from "phaser";
 
-let game;
-
 import player from "./images/player.png";
 import platform from "./images/platform.png";
 import coin from "./images/coin.png";
 import fire from "./images/fire.png";
 import mountain from "./images/mountain.png";
+
+let game;
 
 // global game options
 let gameOptions = {
@@ -77,47 +77,31 @@ class preloadGame extends Phaser.Scene {
     super("PreloadGame");
   }
   preload() {
-    this.load.image("platform", { platform });
+    this.load.image("platform", platform);
 
     // player is a sprite sheet made by 24x48 pixels
-    this.load.spritesheet(
-      "player",
-      { player },
-      {
-        frameWidth: 24,
-        frameHeight: 48,
-      }
-    );
+    this.load.spritesheet("player", player, {
+      frameWidth: 24,
+      frameHeight: 48,
+    });
 
     // the coin is a sprite sheet made by 20x20 pixels
-    this.load.spritesheet(
-      "coin",
-      { coin },
-      {
-        frameWidth: 20,
-        frameHeight: 20,
-      }
-    );
+    this.load.spritesheet("coin", coin, {
+      frameWidth: 20,
+      frameHeight: 20,
+    });
 
     // the firecamp is a sprite sheet made by 32x58 pixels
-    this.load.spritesheet(
-      "fire",
-      { fire },
-      {
-        frameWidth: 40,
-        frameHeight: 70,
-      }
-    );
+    this.load.spritesheet("fire", fire, {
+      frameWidth: 40,
+      frameHeight: 70,
+    });
 
     // mountains are a sprite sheet made by 512x512 pixels
-    this.load.spritesheet(
-      "mountain",
-      { mountain },
-      {
-        frameWidth: 512,
-        frameHeight: 512,
-      }
-    );
+    this.load.spritesheet("mountain", mountain, {
+      frameWidth: 512,
+      frameHeight: 512,
+    });
   }
   create() {
     // setting player animation
