@@ -132,6 +132,7 @@ class playGame extends Phaser.Scene {
   }
 
   // adding mountains
+
   addMountains() {
     let rightmostMountain = this.getRightmostMountain();
     if (rightmostMountain < game.config.width * 2) {
@@ -148,6 +149,7 @@ class playGame extends Phaser.Scene {
   }
 
   // getting rightmost mountain x position
+
   getRightmostMountain() {
     let rightmostMountain = -200;
     this.mountainGroup.getChildren().forEach(function (mountain) {
