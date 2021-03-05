@@ -1,5 +1,5 @@
 import main from "./images/main.png";
-// import main2 from "./images/main2.png";
+import main2 from "./images/main2.png";
 import player from "./images/player.png";
 import platform from "./images/platform.png";
 import coin from "./images/coin.png";
@@ -19,6 +19,8 @@ class preloadGame extends Phaser.Scene {
     this.load.spritesheet("player", main, {
       frameWidth: 104,
       frameHeight: 118,
+      //   frameWidth: 120,
+      //   frameHeight: 120,
     });
 
     // the coin is a sprite sheet made by 20x20 pixels
