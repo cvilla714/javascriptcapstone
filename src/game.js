@@ -39,7 +39,7 @@ let gameOptions = {
   playerStartPosition: 200,
 
   // consecutive jumps allowed
-  jumps: 2,
+  jumps: 3,
 
   // % of probability a coin appears on the platform
   coinPercent: 25,
