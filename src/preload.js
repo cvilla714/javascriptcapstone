@@ -1,3 +1,5 @@
+import girlmove from "./images/spritesheet.png";
+import girl from "./images/girl.png";
 import main from "./images/main.png";
 import main2 from "./images/main2.png";
 import player from "./images/player.png";
@@ -16,9 +18,9 @@ class preloadGame extends Phaser.Scene {
     this.load.image("platform", platform);
 
     // player is a sprite sheet made by 24x48 pixels
-    this.load.spritesheet("player", main, {
-      frameWidth: 104,
-      frameHeight: 118,
+    this.load.spritesheet("player", girlmove, {
+      frameWidth: 130,
+      frameHeight: 130,
       //   frameWidth: 120,
       //   frameHeight: 120,
     });
@@ -61,8 +63,9 @@ class preloadGame extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers("player", {
         start: 0,
         end: 1,
+        // frames: [0, 1],
       }),
-      frameRate: 8,
+      frameRate: 9,
       repeat: -1,
     });
 
