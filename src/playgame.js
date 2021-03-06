@@ -69,7 +69,7 @@ class playGame extends Phaser.Scene {
     this.addPlatform(game.config.width, game.config.width / 2, game.config.height * gameOptions.platformVerticalLimit[1]);
 
     // adding the player;
-    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.7, "player");
+    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.5, "player");
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
 
