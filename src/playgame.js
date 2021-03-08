@@ -1,10 +1,15 @@
 import { game, gameOptions } from "./game";
-
+import coin from "./images/coin.png";
 class playGame extends Phaser.Scene {
   constructor() {
     super("PlayGame");
   }
   create() {
+    var score = 0;
+    var scoreText;
+
+    scoreText = this.add.text(16, 16, "score: 0", { fontSize: "32px", fill: "#000" });
+
     // group with all active mountains.
     this.mountainGroup = this.add.group();
 
@@ -129,6 +134,7 @@ class playGame extends Phaser.Scene {
 
     // checking for input
     this.input.on("pointerdown", this.jump, this);
+    this.input.keyboard.on("keydown-SPACE", this.jump, this);
   }
 
   // adding mountains
@@ -229,6 +235,7 @@ class playGame extends Phaser.Scene {
 
   // the player jumps when on the ground, or once in the air as long as there are jumps left and the first jump was on the ground
   // and obviously if the player is not dying
+
   jump() {
     if (!this.dying && (this.player.body.touching.down || (this.playerJumps > 0 && this.playerJumps < gameOptions.jumps))) {
       if (this.player.body.touching.down) {
