@@ -3,12 +3,17 @@ import coin from "./images/coin.png";
 class playGame extends Phaser.Scene {
   constructor() {
     super("PlayGame");
+
+    this.score = 0;
+    this.scoreText = "";
   }
   create() {
-    var score = 0;
-    var scoreText;
+    this.createScore();
 
-    scoreText = this.add.text(16, 16, "score: 0", { fontSize: "32px", fill: "#000" });
+    // var score = 0;
+    // var scoreText;
+    //
+    // scoreText = this.add.text(16, 16, "score: 0", { fontSize: "32px", fill: "#000" });
 
     // group with all active mountains.
     this.mountainGroup = this.add.group();
@@ -100,6 +105,7 @@ class playGame extends Phaser.Scene {
       this.player,
       this.coinGroup,
       function (player, coin) {
+        // console.log("you picked up a coin");
         this.tweens.add({
           targets: coin,
           y: coin.y - 100,
@@ -108,8 +114,11 @@ class playGame extends Phaser.Scene {
           ease: "Cubic.easeOut",
           callbackScope: this,
           onComplete: function () {
+            // console.log("you picked up a coin");
+            this.increaseScore();
             this.coinGroup.killAndHide(coin);
             this.coinGroup.remove(coin);
+            // console.log("you picked up a coin");
           },
         });
       },
@@ -312,6 +321,16 @@ class playGame extends Phaser.Scene {
       let nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap, minPlatformHeight, maxPlatformHeight);
       this.addPlatform(nextPlatformWidth, game.config.width + nextPlatformWidth / 2, nextPlatformHeight);
     }
+  }
+
+  createScore() {
+    this.score = 0;
+    this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: "32px", fill: "#000" });
+  }
+
+  increaseScore() {
+    this.score++;
+    this.scoreText.setText(`Score: ${this.score}`);
   }
 }
 
