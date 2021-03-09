@@ -1,5 +1,6 @@
 import { game, gameOptions } from "./game";
-import coin from "./images/coin.png";
+// import "./game";
+import pause from "./images/pause.png";
 class playGame extends Phaser.Scene {
   constructor() {
     super("PlayGame");
@@ -7,13 +8,14 @@ class playGame extends Phaser.Scene {
     this.score = 0;
     this.scoreText = "";
   }
+
+  preload() {
+    this.load.image("pause", pause);
+  }
+
   create() {
     this.createScore();
-
-    // var score = 0;
-    // var scoreText;
-    //
-    // scoreText = this.add.text(16, 16, "score: 0", { fontSize: "32px", fill: "#000" });
+    this.createPause();
 
     // group with all active mountains.
     this.mountainGroup = this.add.group();
@@ -340,6 +342,15 @@ class playGame extends Phaser.Scene {
     const bestScore = localStorage.getItem("bestScore");
     this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: "32px", fill: "#000" });
     this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: "18px", fill: "#000" });
+  }
+
+  createPause() {
+    const pauseButton = this.add.image(46, 76, "pause").setInteractive().setScale(3).setOrigin(0);
+
+    pauseButton.on("pointerdown", () => {
+      this.physics.pause();
+      this.scene.pause();
+    });
   }
 
   increaseScore() {
