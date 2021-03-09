@@ -116,6 +116,7 @@ class playGame extends Phaser.Scene {
           onComplete: function () {
             // console.log("you picked up a coin");
             this.increaseScore();
+            this.saveBestScore();
             this.coinGroup.killAndHide(coin);
             this.coinGroup.remove(coin);
             // console.log("you picked up a coin");
@@ -259,10 +260,21 @@ class playGame extends Phaser.Scene {
     }
   }
 
+  saveBestScore() {
+    const bestScoreText = localStorage.getItem("bestScore");
+    const bestScore = bestScoreText && parseInt(bestScoreText, 10);
+
+    if (!bestScore || this.score > bestScore) {
+      localStorage.setItem("bestScore", this.score);
+    }
+  }
+
   update() {
     // game over
     if (this.player.y > game.config.height) {
       this.scene.start("PlayGame");
+
+      this.saveBestScore();
     }
 
     this.player.x = gameOptions.playerStartPosition;
@@ -325,7 +337,9 @@ class playGame extends Phaser.Scene {
 
   createScore() {
     this.score = 0;
+    const bestScore = localStorage.getItem("bestScore");
     this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: "32px", fill: "#000" });
+    this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: "18px", fill: "#000" });
   }
 
   increaseScore() {
