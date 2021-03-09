@@ -127,6 +127,7 @@ class playGame extends Phaser.Scene {
         this.player.setFrame(2);
         this.player.body.setVelocityY(-200);
         this.physics.world.removeCollider(this.platformCollider);
+        this.player.setTint(0xee4824);
       },
       null,
       this
