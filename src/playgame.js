@@ -19,6 +19,7 @@ class playGame extends BaseScene {
     super.create();
     this.createScore();
     this.createPause();
+    this.listenToEvents();
 
     // group with all active mountains.
     this.mountainGroup = this.add.group();
@@ -360,6 +361,20 @@ class playGame extends BaseScene {
   increaseScore() {
     this.score++;
     this.scoreText.setText(`Score: ${this.score}`);
+  }
+
+  // listening to Events
+  listenToEvents() {
+    this.events.on("resume", () => {
+      this.initialTime = 3;
+      this.countDownText = this.add.text(...this.resumeScreenCenter, "Starting in: " + this.initialTime, this.fontResume).setOrigin(0);
+      this.timedEvent = this.time.addEvent({
+        delay: 1000,
+        callback: () => console.log(this.initialTime--),
+        callbackScope: this,
+        loop: true,
+      });
+    });
   }
 }
 
