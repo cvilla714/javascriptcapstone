@@ -11,10 +11,7 @@ class BaseScene extends Phaser.Scene {
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: `#fff` };
   }
 
-  create() {
-    // this.add.image(0, 0, "sky").setOrigin(0);
-    // this.scene.start("PlayGame");
-  }
+  create() {}
 
   createMenu(menu, setupMenuEvents) {
     let lastMenuPositionY = 0;
