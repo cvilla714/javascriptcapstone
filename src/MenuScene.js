@@ -6,7 +6,12 @@ import BaseScene from "./BaseScene";
 class MenuScene extends BaseScene {
   constructor(config) {
     super("MenuScene", config);
-    // this.config = config;
+
+    this.menu = [
+      { scene: "PlayGame", text: "Play" },
+      { scene: "ScoreScene", text: "Score" },
+      { scene: null, text: "Exit" },
+    ];
   }
 
   preload() {
@@ -15,8 +20,7 @@ class MenuScene extends BaseScene {
 
   create() {
     super.create();
-    // this.sayhello();
-    this.scene.start("PlayGame");
+    this.createMenu(this.menu);
   }
 }
 
