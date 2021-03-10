@@ -365,16 +365,30 @@ class playGame extends BaseScene {
 
   // listening to Events
   listenToEvents() {
-    this.events.on("resume", () => {
+    if (this.pauseEvent) {
+      return;
+    }
+
+    this.pauseEvent = this.events.on("resume", () => {
       this.initialTime = 3;
       this.countDownText = this.add.text(...this.resumeScreenCenter, "Starting in: " + this.initialTime, this.fontResume).setOrigin(0);
       this.timedEvent = this.time.addEvent({
         delay: 1000,
-        callback: () => console.log(this.initialTime--),
+        callback: this.countDown,
         callbackScope: this,
         loop: true,
       });
     });
+  }
+
+  countDown() {
+    this.initialTime--;
+    this.countDownText.setText("Starting in: " + this.initialTime);
+    if (this.initialTime <= 0) {
+      this.countDownText.setText("");
+      this.physics.resume();
+      this.timedEvent.remove();
+    }
   }
 }
 
