@@ -1,9 +1,11 @@
 import { game, gameOptions } from "./game";
-// import "./game";
 import pause from "./images/pause.png";
-class playGame extends Phaser.Scene {
-  constructor() {
-    super("PlayGame");
+import BaseScene from "./BaseScene";
+
+// class playGame extends Phaser.Scene {
+class playGame extends BaseScene {
+  constructor(config) {
+    super("PlayGame", config);
 
     this.score = 0;
     this.scoreText = "";
@@ -14,9 +16,11 @@ class playGame extends Phaser.Scene {
   }
 
   create() {
+    super.create();
     this.createScore();
     this.createPause();
 
+    // this.sayhello();
     // group with all active mountains.
     this.mountainGroup = this.add.group();
 
