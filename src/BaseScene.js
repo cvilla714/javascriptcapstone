@@ -1,12 +1,14 @@
 import Phaser from "phaser";
 import { game, gameOptions } from "./game";
-import mountain from "./images/mountain.png";
 
 class BaseScene extends Phaser.Scene {
   constructor(key, config) {
     super(key);
     this.config = config;
     this.screenCenter = [game.config.width / 2, game.config.height / 2];
+    this.fontSize = 55;
+    this.lineHeight = 65;
+    this.fontOptions = { fontSize: `${this.fontSize}px`, fill: `#CD00ff` };
   }
 
   create() {
@@ -18,8 +20,8 @@ class BaseScene extends Phaser.Scene {
     let lastMenuPositionY = 0;
     menu.forEach((menuItem) => {
       const menuPosition = [this.screenCenter[0], this.screenCenter[1] + lastMenuPositionY];
-      this.add.text(...menuPosition, menuItem.text, { fontSize: "32px", fill: "#CD00ff" }).setOrigin(0.5, 1);
-      lastMenuPositionY += 42;
+      this.add.text(...menuPosition, menuItem.text, this.fontOptions).setOrigin(0.5, 1);
+      lastMenuPositionY += this.lineHeight;
     });
   }
 }
