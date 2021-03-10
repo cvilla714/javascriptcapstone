@@ -3,6 +3,7 @@ import preloadGame from "./preload";
 import playGame from "./playgame";
 import resize from "./resize";
 import MenuScene from "./MenuScene";
+import ScoreScene from "./ScoreScene";
 
 let game;
 
@@ -55,7 +56,7 @@ window.onload = function () {
     type: Phaser.AUTO,
     width: 1334,
     height: 750,
-    scene: [preloadGame, MenuScene, playGame],
+    scene: [preloadGame, MenuScene, ScoreScene, playGame],
     backgroundColor: 0x0c88c7,
 
     // physics settings
