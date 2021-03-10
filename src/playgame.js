@@ -20,7 +20,6 @@ class playGame extends BaseScene {
     this.createScore();
     this.createPause();
 
-    // this.sayhello();
     // group with all active mountains.
     this.mountainGroup = this.add.group();
 
