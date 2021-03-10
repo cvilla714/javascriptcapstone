@@ -1,8 +1,4 @@
 import girlmove from "./images/spritesheet.png";
-// import girl from "./images/girl.png";
-// import main from "./images/main.png";
-// import main2 from "./images/main2.png";
-// import player from "./images/player.png";
 import platform from "./images/platform.png";
 import coin from "./images/coin.png";
 import fire from "./images/fire.png";
@@ -92,7 +88,8 @@ class preloadGame extends Phaser.Scene {
       repeat: -1,
     });
 
-    this.scene.start("PlayGame");
+    // this.scene.start("PlayGame");
+    this.scene.start("MenuScene");
   }
 }
 
