@@ -6,9 +6,11 @@ class BaseScene extends Phaser.Scene {
     super(key);
     this.config = config;
     this.screenCenter = [game.config.width / 2, game.config.height / 2];
+    this.resumeScreenCenter = [game.config.width / 4, game.config.height / 4];
     this.fontSize = 55;
     this.lineHeight = 65;
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: `#fff` };
+    this.fontResume = { fontSize: `${this.fontSize}px`, fill: `#f5ef42` };
   }
 
   create() {}
