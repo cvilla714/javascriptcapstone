@@ -1,12 +1,14 @@
 import Phaser from "phaser";
-import { game, gameOptions } from "./game";
+// import { game } from "./game";
 
 class BaseScene extends Phaser.Scene {
   constructor(key, config) {
     super(key);
     this.config = config;
-    this.screenCenter = [game.config.width / 2, game.config.height / 2];
-    this.resumeScreenCenter = [game.config.width / 4, game.config.height / 4];
+    // this.screenCenter = [game.config.width / 2, game.config.height / 2];
+    this.screenCenter = [1334 / 2, 750 / 2];
+    // this.resumeScreenCenter = [game.config.width / 4, game.config.height / 4];
+    this.resumeScreenCenter = [1334 / 4, 750 / 4];
     this.fontSize = 55;
     this.lineHeight = 65;
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: `#fff` };
