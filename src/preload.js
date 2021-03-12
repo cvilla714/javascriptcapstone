@@ -17,8 +17,6 @@ class preloadGame extends Phaser.Scene {
     this.load.spritesheet("player", girlmove, {
       frameWidth: 130,
       frameHeight: 130,
-      //   frameWidth: 120,
-      //   frameHeight: 120,
     });
 
     // the coin is a sprite sheet made by 20x20 pixels
@@ -59,7 +57,6 @@ class preloadGame extends Phaser.Scene {
       frames: this.anims.generateFrameNumbers("player", {
         start: 0,
         end: 1,
-        // frames: [0, 1],
       }),
       frameRate: 9,
       repeat: -1,

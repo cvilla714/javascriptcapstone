@@ -1,6 +1,4 @@
 import BaseScene from "./BaseScene";
-
-// class MenuScene extends Phaser.Scene {
 class PauseScene extends BaseScene {
   constructor(config) {
     super("PauseScene", config);

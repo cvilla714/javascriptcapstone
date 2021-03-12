@@ -71,9 +71,4 @@ window.onload = function () {
   window.addEventListener("resize", resize, false);
 };
 
-// preloadGame scene
-
-// playGame scene
-
-// resize
 export { game, gameOptions };
