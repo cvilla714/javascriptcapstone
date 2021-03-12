@@ -1,21 +1,22 @@
-import Phaser from "phaser";
-import girlmove from "./images/spritesheet.png";
-import platform from "./images/platform.png";
-import coin from "./images/coin.png";
-import fire from "./images/fire.png";
-import mountain from "./images/mountain.png";
-import music from "./images/DanceandJump.ogg";
+import Phaser from 'phaser';
+import girlmove from './images/spritesheet.png';
+import platform from './images/platform.png';
+import coin from './images/coin.png';
+import fire from './images/fire.png';
+import mountain from './images/mountain.png';
+import music from './images/DanceandJump.ogg';
 
 class preloadGame extends Phaser.Scene {
   constructor() {
-    super("PreloadGame");
+    super('PreloadGame');
   }
+
   preload() {
-    this.load.audio("music", music);
-    this.load.image("platform", platform);
+    this.load.audio('music', music);
+    this.load.image('platform', platform);
 
     // player is a sprite sheet made by 24x48 pixels
-    this.load.spritesheet("player", girlmove, {
+    this.load.spritesheet('player', girlmove, {
       frameWidth: 130,
       frameHeight: 130,
       //   frameWidth: 120,
@@ -23,28 +24,29 @@ class preloadGame extends Phaser.Scene {
     });
 
     // the coin is a sprite sheet made by 20x20 pixels
-    this.load.spritesheet("coin", coin, {
+    this.load.spritesheet('coin', coin, {
       frameWidth: 20,
       frameHeight: 20,
     });
 
     // the firecamp is a sprite sheet made by 32x58 pixels
-    this.load.spritesheet("fire", fire, {
+    this.load.spritesheet('fire', fire, {
       frameWidth: 40,
       frameHeight: 70,
     });
 
     // mountains are a sprite sheet made by 512x512 pixels
-    this.load.spritesheet("mountain", mountain, {
+    this.load.spritesheet('mountain', mountain, {
       frameWidth: 512,
       frameHeight: 512,
     });
   }
-  create() {
-    //music
-    this.music = this.sound.add("music");
 
-    var musicConfig = {
+  create() {
+    // music
+    this.music = this.sound.add('music');
+
+    const musicConfig = {
       mute: false,
       volume: 1,
       rate: 1,
@@ -56,8 +58,8 @@ class preloadGame extends Phaser.Scene {
     this.music.play(musicConfig);
     // setting player animation
     this.anims.create({
-      key: "run",
-      frames: this.anims.generateFrameNumbers("player", {
+      key: 'run',
+      frames: this.anims.generateFrameNumbers('player', {
         start: 0,
         end: 1,
         // frames: [0, 1],
@@ -68,8 +70,8 @@ class preloadGame extends Phaser.Scene {
 
     // setting coin animation
     this.anims.create({
-      key: "rotate",
-      frames: this.anims.generateFrameNumbers("coin", {
+      key: 'rotate',
+      frames: this.anims.generateFrameNumbers('coin', {
         start: 0,
         end: 5,
       }),
@@ -80,8 +82,8 @@ class preloadGame extends Phaser.Scene {
 
     // setting fire animation
     this.anims.create({
-      key: "burn",
-      frames: this.anims.generateFrameNumbers("fire", {
+      key: 'burn',
+      frames: this.anims.generateFrameNumbers('fire', {
         start: 0,
         end: 4,
       }),
@@ -90,7 +92,7 @@ class preloadGame extends Phaser.Scene {
     });
 
     // this.scene.start("PlayGame");
-    this.scene.start("MenuScene");
+    this.scene.start('MenuScene');
   }
 }
 

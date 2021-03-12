@@ -1,15 +1,16 @@
-import Phaser from "phaser";
-import preloadGame from "./preload";
-import playGame from "./playgame";
-// import resize from "./resize";
-import MenuScene from "./MenuScene";
-import ScoreScene from "./ScoreScene";
-import PauseScene from "./PauseScene";
+/* eslint-disable import/no-cycle, import/no-mutable-exports,func-names */
+import Phaser from 'phaser';
+import preloadGame from './preload';
+import playGame from './playgame';
+import resize from './resize';
+import MenuScene from './MenuScene';
+import ScoreScene from './ScoreScene';
+import PauseScene from './PauseScene';
 
 let game;
 
 // global game options
-let gameOptions = {
+const gameOptions = {
   // platform speed range, in pixels per second
   platformSpeedRange: [300, 300],
 
@@ -53,7 +54,7 @@ let gameOptions = {
 
 window.onload = function () {
   // object containing configuration options
-  let gameConfig = {
+  const gameConfig = {
     type: Phaser.AUTO,
     width: 1334,
     height: 750,
@@ -62,13 +63,13 @@ window.onload = function () {
 
     // physics settings
     physics: {
-      default: "arcade",
+      default: 'arcade',
     },
   };
   game = new Phaser.Game(gameConfig);
   window.focus();
   resize();
-  window.addEventListener("resize", resize, false);
+  window.addEventListener('resize', resize, false);
 };
 
 // preloadGame scene

@@ -1,19 +1,20 @@
-import BaseScene from "./BaseScene";
+/* eslint-disable no-unused-expressions,class-methods-use-this */
+import BaseScene from './BaseScene';
 
 // class MenuScene extends Phaser.Scene {
 class MenuScene extends BaseScene {
   constructor(config) {
-    super("MenuScene", config);
+    super('MenuScene', config);
 
     this.menu = [
-      { scene: "PlayGame", text: "Play" },
-      { scene: "ScoreScene", text: "Score" },
-      { scene: null, text: "Exit" },
+      { scene: 'PlayGame', text: 'Play' },
+      { scene: 'ScoreScene', text: 'Score' },
+      { scene: null, text: 'Exit' },
     ];
   }
 
   preload() {
-    // this.load.image("sky", mountain);
+    //   // this.load.image("sky", mountain);
   }
 
   create() {
@@ -22,21 +23,21 @@ class MenuScene extends BaseScene {
   }
 
   setupMenuEvents(menuItem) {
-    const textGO = menuItem.textGO;
+    const { textGO } = menuItem;
     textGO.setInteractive();
 
-    textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
+    textGO.on('pointerover', () => {
+      textGO.setStyle({ fill: '#ff0' });
     });
 
-    textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#fff" });
+    textGO.on('pointerout', () => {
+      textGO.setStyle({ fill: '#fff' });
     });
 
-    textGO.on("pointerup", () => {
+    textGO.on('pointerup', () => {
       menuItem.scene && this.scene.start(menuItem.scene);
 
-      if (menuItem.text === "Exit") {
+      if (menuItem.text === 'Exit') {
         this.game.destroy(true);
       }
     });

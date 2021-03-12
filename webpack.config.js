@@ -1,43 +1,44 @@
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-let mode = "development";
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-if (process.env.NODE_ENV === "production") {
-  mode = "production";
+let mode = 'development';
+
+if (process.env.NODE_ENV === 'production') {
+  mode = 'production';
 }
 
 module.exports = {
-  mode: mode,
+  mode,
 
   output: {
-    path: path.resolve(__dirname, "dist"),
-    assetModuleFilename: "images/[name][ext][query]",
+    path: path.resolve(__dirname, 'dist'),
+    assetModuleFilename: 'images/[name][ext][query]',
   },
 
   module: {
     rules: [
       {
         test: /\.(png|jpe?g|gif|svg|ogg|mp3|wav)$/i,
-        type: "asset/resource",
+        type: 'asset/resource',
       },
       {
         test: /\.(s[ac]|c)ss$/i,
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
-            options: { publicPath: "" },
+            options: { publicPath: '' },
           },
-          "css-loader",
-          "sass-loader",
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
         },
       },
     ],
@@ -47,12 +48,12 @@ module.exports = {
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: "./src/index.html",
+      template: './src/index.html',
     }),
   ],
-  devtool: "source-map",
+  devtool: 'source-map',
   devServer: {
-    contentBase: "./dist",
+    contentBase: './dist',
     hot: true,
   },
 };

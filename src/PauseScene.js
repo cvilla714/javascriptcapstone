@@ -1,13 +1,13 @@
-import BaseScene from "./BaseScene";
+import BaseScene from './BaseScene';
 
 // class MenuScene extends Phaser.Scene {
 class PauseScene extends BaseScene {
   constructor(config) {
-    super("PauseScene", config);
+    super('PauseScene', config);
 
     this.menu = [
-      { scene: "PlayGame", text: "Continue" },
-      { scene: "MenuScene", text: "Exit" },
+      { scene: 'PlayGame', text: 'Continue' },
+      { scene: 'MenuScene', text: 'Exit' },
     ];
   }
 
@@ -17,26 +17,26 @@ class PauseScene extends BaseScene {
   }
 
   setupMenuEvents(menuItem) {
-    const textGO = menuItem.textGO;
+    const { textGO } = menuItem;
     textGO.setInteractive();
 
-    textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
+    textGO.on('pointerover', () => {
+      textGO.setStyle({ fill: '#ff0' });
     });
 
-    textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#fff" });
+    textGO.on('pointerout', () => {
+      textGO.setStyle({ fill: '#fff' });
     });
 
-    textGO.on("pointerup", () => {
+    textGO.on('pointerup', () => {
       //   console.log("Clicking on some options");
-      if (menuItem.scene && menuItem.text === "Continue") {
+      if (menuItem.scene && menuItem.text === 'Continue') {
         // Shutting down the Pause Scene and resuming the Play Scene
         this.scene.stop();
         this.scene.resume(menuItem.scene);
       } else {
         // Shutting PlayScene, PauseScene and running Menu
-        this.scene.stop("PlayScene");
+        this.scene.stop('PlayScene');
         this.scene.start(menuItem.scene);
       }
     });

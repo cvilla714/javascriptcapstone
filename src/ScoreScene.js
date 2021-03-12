@@ -1,21 +1,22 @@
-import BaseScene from "./BaseScene";
+/* eslint-disable array-callback-return */
+import BaseScene from './BaseScene';
 // import back from "./images/back.png";
-import scoreboard from "./ScoreBoard";
+import scoreboard from './ScoreBoard';
 
 class ScoreScene extends BaseScene {
   constructor(config) {
-    super("ScoreScene", config);
+    super('ScoreScene', config);
   }
 
   preload() {
-    this.load.image("back", "./images/back.png");
+    this.load.image('back', './images/back.png');
   }
 
   create() {
     super.create();
     this.createBack();
     const bestScore = scoreboard();
-    console.log(bestScore);
+    // console.log(bestScore);
     let lastMenuPositionY = 0;
 
     bestScore.then((data) => {
@@ -28,10 +29,10 @@ class ScoreScene extends BaseScene {
   }
 
   createBack() {
-    const backButton = this.add.text(46, 76, "back").setInteractive().setScale(3).setOrigin(0);
+    const backButton = this.add.text(46, 76, 'back').setInteractive().setScale(3).setOrigin(0);
 
-    backButton.on("pointerdown", () => {
-      this.scene.start("MenuScene");
+    backButton.on('pointerdown', () => {
+      this.scene.start('MenuScene');
     });
   }
 }
