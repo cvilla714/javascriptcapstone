@@ -14,7 +14,7 @@
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://frosty-fermat-dca644.netlify.app/)
 
 ## Getting Started
 
@@ -66,6 +66,8 @@
 - **_If you choose to exit the game and start a new one you can do it by selecting exit and then selecting play_**
 
 ### Run tests
+
+**To run the test environment you can just type in your teminal `npm run test`**
 
 ### Deployment
 
