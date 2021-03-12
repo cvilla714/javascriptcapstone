@@ -1,9 +1,10 @@
+import Phaser from "phaser";
 import girlmove from "./images/spritesheet.png";
 import platform from "./images/platform.png";
 import coin from "./images/coin.png";
 import fire from "./images/fire.png";
 import mountain from "./images/mountain.png";
-import music from "./DanceandJump.ogg";
+import music from "./images/DanceandJump.ogg";
 
 class preloadGame extends Phaser.Scene {
   constructor() {
