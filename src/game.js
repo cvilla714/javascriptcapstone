@@ -1,7 +1,7 @@
 import Phaser from "phaser";
 import preloadGame from "./preload";
 import playGame from "./playgame";
-import resize from "./resize";
+// import resize from "./resize";
 import MenuScene from "./MenuScene";
 import ScoreScene from "./ScoreScene";
 import PauseScene from "./PauseScene";
