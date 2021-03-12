@@ -1,9 +1,11 @@
 import { game, gameOptions } from "./game";
-// import "./game";
 import pause from "./images/pause.png";
-class playGame extends Phaser.Scene {
-  constructor() {
-    super("PlayGame");
+import BaseScene from "./BaseScene";
+
+// class playGame extends Phaser.Scene {
+class playGame extends BaseScene {
+  constructor(config) {
+    super("PlayGame", config);
 
     this.score = 0;
     this.scoreText = "";
@@ -14,8 +16,10 @@ class playGame extends Phaser.Scene {
   }
 
   create() {
+    super.create();
     this.createScore();
     this.createPause();
+    this.listenToEvents();
 
     // group with all active mountains.
     this.mountainGroup = this.add.group();
@@ -350,12 +354,41 @@ class playGame extends Phaser.Scene {
     pauseButton.on("pointerdown", () => {
       this.physics.pause();
       this.scene.pause();
+      this.scene.launch("PauseScene");
     });
   }
 
   increaseScore() {
     this.score++;
     this.scoreText.setText(`Score: ${this.score}`);
+  }
+
+  // listening to Events
+  listenToEvents() {
+    if (this.pauseEvent) {
+      return;
+    }
+
+    this.pauseEvent = this.events.on("resume", () => {
+      this.initialTime = 3;
+      this.countDownText = this.add.text(...this.resumeScreenCenter, "Starting in: " + this.initialTime, this.fontResume).setOrigin(0);
+      this.timedEvent = this.time.addEvent({
+        delay: 1000,
+        callback: this.countDown,
+        callbackScope: this,
+        loop: true,
+      });
+    });
+  }
+
+  countDown() {
+    this.initialTime--;
+    this.countDownText.setText("Starting in: " + this.initialTime);
+    if (this.initialTime <= 0) {
+      this.countDownText.setText("");
+      this.physics.resume();
+      this.timedEvent.remove();
+    }
   }
 }
 
