@@ -1,14 +1,14 @@
 import BaseScene from "./BaseScene";
-import back from "./images/back.png";
+// import back from "./images/back.png";
 import scoreboard from "./ScoreBoard";
-import { game, gameOptions } from "./game";
+
 class ScoreScene extends BaseScene {
   constructor(config) {
     super("ScoreScene", config);
   }
 
   preload() {
-    this.load.image("back", back);
+    this.load.image("back", "./images/back.png");
   }
 
   create() {
@@ -28,7 +28,7 @@ class ScoreScene extends BaseScene {
   }
 
   createBack() {
-    const backButton = this.add.image(46, 76, "back").setInteractive().setScale(3).setOrigin(0);
+    const backButton = this.add.text(46, 76, "back").setInteractive().setScale(3).setOrigin(0);
 
     backButton.on("pointerdown", () => {
       this.scene.start("MenuScene");
