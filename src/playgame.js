@@ -1,7 +1,7 @@
 import { game, gameOptions } from "./game";
 import pause from "./images/pause.png";
 import BaseScene from "./BaseScene";
-
+import savingyou from "./saveBestScore";
 // class playGame extends Phaser.Scene {
 class playGame extends BaseScene {
   constructor(config) {
@@ -267,19 +267,23 @@ class playGame extends BaseScene {
   }
 
   saveBestScore() {
-    const bestScoreText = localStorage.getItem("bestScore");
-    const bestScore = bestScoreText && parseInt(bestScoreText, 10);
-
-    if (!bestScore || this.score > bestScore) {
-      localStorage.setItem("bestScore", this.score);
-    }
+    savingyou(this.score);
   }
+
+  // saveBestScore() {
+  //   const bestScoreText = localStorage.getItem("bestScore");
+  //   const bestScore = bestScoreText && parseInt(bestScoreText, 10);
+
+  //   if (!bestScore || this.score > bestScore) {
+  //     localStorage.setItem("bestScore", this.score);
+  //   }
+  // }
 
   update() {
     // game over
     if (this.player.y > game.config.height) {
       this.scene.start("PlayGame");
-
+      // alert("yuou just died");
       this.saveBestScore();
     }
 
