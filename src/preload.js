@@ -1,38 +1,39 @@
-import girlmove from "./images/spritesheet.png";
-import platform from "./images/platform.png";
-import coin from "./images/coin.png";
-import fire from "./images/fire.png";
-import mountain from "./images/mountain.png";
-import music from "./DanceandJump.ogg";
+import Phaser from "phaser";
+// import girlmove from "./images/spritesheet.png";
+// import platform from "./images/platform.png";
+// import coin from "./images/coin.png";
+// import fire from "./images/fire.png";
+// import mountain from "./images/mountain.png";
+// import music from "./DanceandJump.ogg";
 
 class preloadGame extends Phaser.Scene {
   constructor() {
     super("PreloadGame");
   }
   preload() {
-    this.load.audio("music", music);
-    this.load.image("platform", platform);
+    this.load.audio("music", "./images/DanceandJump.ogg");
+    this.load.image("platform", "./images/platform.png");
 
     // player is a sprite sheet made by 24x48 pixels
-    this.load.spritesheet("player", girlmove, {
+    this.load.spritesheet("player", "./images/spritesheet.png", {
       frameWidth: 130,
       frameHeight: 130,
     });
 
     // the coin is a sprite sheet made by 20x20 pixels
-    this.load.spritesheet("coin", coin, {
+    this.load.spritesheet("coin", "./images/coin.png", {
       frameWidth: 20,
       frameHeight: 20,
     });
 
     // the firecamp is a sprite sheet made by 32x58 pixels
-    this.load.spritesheet("fire", fire, {
+    this.load.spritesheet("fire", "./images/fire.png", {
       frameWidth: 40,
       frameHeight: 70,
     });
 
     // mountains are a sprite sheet made by 512x512 pixels
-    this.load.spritesheet("mountain", mountain, {
+    this.load.spritesheet("mountain", "./images/mountain.png", {
       frameWidth: 512,
       frameHeight: 512,
     });

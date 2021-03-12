@@ -1,6 +1,7 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+// const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 let mode = "development";
 
@@ -10,6 +11,10 @@ if (process.env.NODE_ENV === "production") {
 
 module.exports = {
   mode: mode,
+  entry: {
+    main: "./src/index.js",
+    "production-dependencies": ["phaser"],
+  },
 
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -45,14 +50,32 @@ module.exports = {
 
   plugins: [
     new CleanWebpackPlugin(),
-    new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({
-      template: "./src/index.html",
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: path.resolve(__dirname, "src/index.html"),
+          to: path.resolve(__dirname, "dist"),
+        },
+        {
+          from: path.resolve(__dirname, "src/images/"),
+          to: path.resolve(__dirname, "dist/images/"),
+        },
+      ],
     }),
+    new MiniCssExtractPlugin(),
+    // new HtmlWebpackPlugin({
+    //   template: "./src/index.html",
+    // }),
   ],
   devtool: "source-map",
   devServer: {
     contentBase: "./dist",
     hot: true,
+  },
+  optimization: {
+    splitChunks: {
+      name: "production-dependencies",
+      filename: "production-dependencies.bundle.js",
+    },
   },
 };

@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "webpack serve --open",
     "watch": "webpack --watch",
     "build": "NODE_ENV=production webpack",
@@ -13,24 +13,30 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cvilla714/drum-machine.git"
+    "url": "git+https://github.com//cvilla714/javascriptcapstone"
   },
   "keywords": [],
   "author": "Cosmel",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cvilla714/drum-machine/issues"
+    "url": "https://github.com/cvilla714/drum-javascriptcapstone/issues"
   },
-  "homepage": "https://github.com/cvilla714/drum-machine#readme",
+  "homepage": "https://github.com/cvilla714/drum-javascriptcapstone#readme",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.0.0",
+    "jest": "^26.6.3",
+    "jest-canvas-mock": "^2.3.1",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@babel/core": "^7.13.8",
-    "@babel/preset-env": "^7.13.9",
+    "@babel/cli": "^7.13.10",
+    "@babel/core": "^7.13.10",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.13.10",
+    "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.2",
     "core-js": "^3.9.1",
     "css-loader": "^5.1.1",
