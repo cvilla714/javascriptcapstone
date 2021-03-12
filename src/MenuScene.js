@@ -1,5 +1,3 @@
-// import Phaser from "phaser";
-// import mountain from "./images/mountain.png";
 import BaseScene from "./BaseScene";
 
 // class MenuScene extends Phaser.Scene {
