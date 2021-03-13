@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import { game } from './game';
 import gameOptions from './gameOptions';
 import pause from './images/pause.png';
 import BaseScene from './BaseScene';
@@ -60,8 +59,8 @@ class playGame extends BaseScene {
     this.addMountains();
     this.addedPlatforms = 0;
     this.playerJumps = 0;
-    this.addPlatform(game.config.width, game.config.width / 2, game.config.height * gameOptions.platformVerticalLimit[1]);
-    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.5, 'player');
+    this.addPlatform(this.cameras.main.width, this.cameras.main.width / 2, this.cameras.main.height * gameOptions.platformVerticalLimit[1]);
+    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, this.cameras.main.height * 0.5, 'player');
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
     this.dying = false;
@@ -121,8 +120,8 @@ class playGame extends BaseScene {
 
   addMountains() {
     const rightmostMountain = this.getRightmostMountain();
-    if (rightmostMountain < game.config.width * 2) {
-      const mountain = this.physics.add.sprite(rightmostMountain + Phaser.Math.Between(100, 350), game.config.height + Phaser.Math.Between(0, 100), 'mountain');
+    if (rightmostMountain < this.cameras.main.width * 2) {
+      const mountain = this.physics.add.sprite(rightmostMountain + Phaser.Math.Between(100, 350), this.cameras.main.height + Phaser.Math.Between(0, 100), 'mountain');
       mountain.setOrigin(0.5, 1);
       mountain.body.setVelocityX(gameOptions.mountainSpeed * -1);
       this.mountainGroup.add(mountain);
@@ -224,16 +223,16 @@ class playGame extends BaseScene {
   }
 
   update() {
-    if (this.player.y > game.config.height) {
+    if (this.player.y > this.cameras.main.height) {
       this.scene.start('PlayGame');
       this.saveBestScore();
     }
 
     this.player.x = gameOptions.playerStartPosition;
-    let minDistance = game.config.width;
+    let minDistance = this.cameras.main.width;
     let rightmostPlatformHeight = 0;
     this.platformGroup.getChildren().forEach(function (platform) {
-      const platformDistance = game.config.width - platform.x - platform.displayWidth / 2;
+      const platformDistance = this.cameras.main.width - platform.x - platform.displayWidth / 2;
       if (platformDistance < minDistance) {
         minDistance = platformDistance;
         rightmostPlatformHeight = platform.y;
@@ -262,7 +261,7 @@ class playGame extends BaseScene {
       if (mountain.x < -mountain.displayWidth) {
         const rightmostMountain = this.getRightmostMountain();
         mountain.x = rightmostMountain + Phaser.Math.Between(100, 350);
-        mountain.y = game.config.height + Phaser.Math.Between(0, 100);
+        mountain.y = this.cameras.main.height + Phaser.Math.Between(0, 100);
         mountain.setFrame(Phaser.Math.Between(0, 3));
         if (Phaser.Math.Between(0, 1)) {
           mountain.setDepth(1);
@@ -274,10 +273,10 @@ class playGame extends BaseScene {
       const nextPlatformWidth = Phaser.Math.Between(gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1]);
       const platformRandomHeight = gameOptions.platformHeighScale * Phaser.Math.Between(gameOptions.platformHeightRange[0], gameOptions.platformHeightRange[1]);
       const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
-      const minPlatformHeight = game.config.height * gameOptions.platformVerticalLimit[0];
-      const maxPlatformHeight = game.config.height * gameOptions.platformVerticalLimit[1];
+      const minPlatformHeight = this.cameras.main.height * gameOptions.platformVerticalLimit[0];
+      const maxPlatformHeight = this.cameras.main.height * gameOptions.platformVerticalLimit[1];
       const nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap, minPlatformHeight, maxPlatformHeight);
-      this.addPlatform(nextPlatformWidth, game.config.width + nextPlatformWidth / 2, nextPlatformHeight);
+      this.addPlatform(nextPlatformWidth, this.cameras.main.width + nextPlatformWidth / 2, nextPlatformHeight);
     }
   }
 
