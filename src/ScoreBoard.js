@@ -7,11 +7,8 @@ const scoreboard = async () => {
     return names;
   } catch (err) {
     console.log(err);
-    // throw Error("No info to display");
     throw Error(err);
   }
 };
-
-// scoreboard();
 
 export default scoreboard;

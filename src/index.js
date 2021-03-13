@@ -1,11 +1,5 @@
-// import BaseScene from "./BaseScene";
-// import MenuScene from "./MenuScene";
-// import PauseScene from "./PauseScene";
-// import playGame from "./playgame";
-// import preloadGame from "./preload";
-// import ScoreScene from "./ScoreScene";
-import 'core-js/stable';
-import 'regenerator-runtime/runtime';
-import './index.scss';
-import './game';
-import './ScoreBoard';
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+import "./index.scss";
+import "./game";
+import "./ScoreBoard";
