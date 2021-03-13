@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle, import/no-mutable-exports,func-names */
 import Phaser from "phaser";
 import preloadGame from "./preload";
 import playGame from "./playgame";
@@ -8,22 +7,6 @@ import ScoreScene from "./ScoreScene";
 import PauseScene from "./PauseScene";
 
 let game;
-
-const gameOptions = {
-  platformSpeedRange: [300, 300],
-  mountainSpeed: 80,
-  spawnRange: [80, 300],
-  platformSizeRange: [90, 300],
-  platformHeightRange: [-5, 5],
-  platformHeighScale: 20,
-  platformVerticalLimit: [0.4, 0.8],
-  playerGravity: 900,
-  jumpForce: 400,
-  playerStartPosition: 200,
-  jumps: 3,
-  coinPercent: 25,
-  firePercent: 25,
-};
 
 window.onload = function () {
   const gameConfig = {
@@ -42,4 +25,4 @@ window.onload = function () {
   window.addEventListener("resize", resize, false);
 };
 
-export { game, gameOptions };
+export { game };
