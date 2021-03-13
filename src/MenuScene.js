@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions,class-methods-use-this */
 import BaseScene from "./BaseScene";
 
 class MenuScene extends BaseScene {
@@ -12,10 +11,7 @@ class MenuScene extends BaseScene {
     ];
   }
 
-  preload() {}
-
   create() {
-    super.create();
     this.createMenu(this.menu, this.setupMenuEvents.bind(this));
   }
 
@@ -32,7 +28,7 @@ class MenuScene extends BaseScene {
     });
 
     textGO.on("pointerup", () => {
-      menuItem.scene && this.scene.start(menuItem.scene);
+      this.scene.start(menuItem.scene);
 
       if (menuItem.text === "Exit") {
         this.game.destroy(true);
