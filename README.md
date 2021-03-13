@@ -61,15 +61,13 @@
 
 - **_You can pause the game by pressing on the button below the Best Score_**
 
-- **_In orde to resume the game you can select from the menu to continue and a counter will show up letting you know that you will have 3 seconds to get ready to play again._**
+- **_In order to resume the game you can select from the menu to continue and a counter will show up letting you know that you will have 3 seconds to get ready to play again._**
 
 - **_If you choose to exit the game and start a new one you can do it by selecting exit and then selecting play_**
 
 ### Run tests
 
-**To run the test environment you can just type in your teminal `npm run test`**
-
-### Deployment
+**To run the test environment you can just need to type in your teminal `npm run test`**
 
 ## Authors
 
