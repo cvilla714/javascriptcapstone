@@ -1,4 +1,3 @@
-/* eslint-disable max-len,class-methods-use-this */
 import Phaser from "phaser";
 
 class BaseScene extends Phaser.Scene {
@@ -12,8 +11,6 @@ class BaseScene extends Phaser.Scene {
     this.fontOptions = { fontSize: `${this.fontSize}px`, fill: "#fff" };
     this.fontResume = { fontSize: `${this.fontSize}px`, fill: "#f5ef42" };
   }
-
-  create() {}
 
   createMenu(menu, setupMenuEvents) {
     let lastMenuPositionY = 0;
