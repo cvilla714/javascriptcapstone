@@ -59,7 +59,11 @@ class playGame extends BaseScene {
     this.addMountains();
     this.addedPlatforms = 0;
     this.playerJumps = 0;
-    this.addPlatform(this.cameras.main.width, this.cameras.main.width / 2, this.cameras.main.height * gameOptions.platformVerticalLimit[1]);
+    this.addPlatform(
+      this.cameras.main.width,
+      this.cameras.main.width / 2,
+      this.cameras.main.height * gameOptions.platformVerticalLimit[1],
+    );
     this.player = this.physics.add.sprite(gameOptions.playerStartPosition, this.cameras.main.height * 0.5, 'player');
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
@@ -158,11 +162,24 @@ class playGame extends BaseScene {
       platform = this.add.tileSprite(posX, posY, platformWidth, 32, 'platform');
       this.physics.add.existing(platform);
       platform.body.setImmovable(true);
-      platform.body.setVelocityX(Phaser.Math.Between(gameOptions.platformSpeedRange[0], gameOptions.platformSpeedRange[1]) * -1);
+      platform.body
+        .setVelocityX(
+          Phaser
+            .Math
+            .Between(
+              gameOptions.platformSpeedRange[0],
+              gameOptions.platformSpeedRange[1],
+            ) * -1,
+        );
       platform.setDepth(2);
       this.platformGroup.add(platform);
     }
-    this.nextPlatformDistance = Phaser.Math.Between(gameOptions.spawnRange[0], gameOptions.spawnRange[1]);
+    this.nextPlatformDistance = Phaser
+      .Math
+      .Between(
+        gameOptions.spawnRange[0],
+        gameOptions.spawnRange[1],
+      );
     if (this.addedPlatforms > 1) {
       if (Phaser.Math.Between(1, 100) <= gameOptions.coinPercent) {
         if (this.coinPool.getLength()) {
@@ -206,7 +223,13 @@ class playGame extends BaseScene {
   }
 
   jump() {
-    if (!this.dying && (this.player.body.touching.down || (this.playerJumps > 0 && this.playerJumps < gameOptions.jumps))) {
+    if (
+      !this.dying && (
+        this.player.body.touching.down
+        || (
+          this.playerJumps > 0
+          && this.playerJumps < gameOptions.jumps
+        ))) {
       if (this.player.body.touching.down) {
         this.playerJumps = 0;
       }
@@ -270,13 +293,33 @@ class playGame extends BaseScene {
     }, this);
 
     if (minDistance > this.nextPlatformDistance) {
-      const nextPlatformWidth = Phaser.Math.Between(gameOptions.platformSizeRange[0], gameOptions.platformSizeRange[1]);
-      const platformRandomHeight = gameOptions.platformHeighScale * Phaser.Math.Between(gameOptions.platformHeightRange[0], gameOptions.platformHeightRange[1]);
+      const nextPlatformWidth = Phaser
+        .Math
+        .Between(
+          gameOptions.platformSizeRange[0],
+          gameOptions.platformSizeRange[1],
+        );
+      const platformRandomHeight = gameOptions.platformHeighScale * Phaser
+        .Math
+        .Between(
+          gameOptions.platformHeightRange[0],
+          gameOptions.platformHeightRange[1],
+        );
       const nextPlatformGap = rightmostPlatformHeight + platformRandomHeight;
       const minPlatformHeight = this.cameras.main.height * gameOptions.platformVerticalLimit[0];
       const maxPlatformHeight = this.cameras.main.height * gameOptions.platformVerticalLimit[1];
-      const nextPlatformHeight = Phaser.Math.Clamp(nextPlatformGap, minPlatformHeight, maxPlatformHeight);
-      this.addPlatform(nextPlatformWidth, this.cameras.main.width + nextPlatformWidth / 2, nextPlatformHeight);
+      const nextPlatformHeight = Phaser
+        .Math
+        .Clamp(
+          nextPlatformGap,
+          minPlatformHeight,
+          maxPlatformHeight,
+        );
+      this.addPlatform(
+        nextPlatformWidth,
+        this.cameras.main.width + nextPlatformWidth / 2,
+        nextPlatformHeight,
+      );
     }
   }
 
