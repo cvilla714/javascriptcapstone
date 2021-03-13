@@ -1,13 +1,13 @@
-import BaseScene from "./BaseScene";
+import BaseScene from './BaseScene';
 
 class MenuScene extends BaseScene {
   constructor(config) {
-    super("MenuScene", config);
+    super('MenuScene', config);
 
     this.menu = [
-      { scene: "PlayGame", text: "Play" },
-      { scene: "ScoreScene", text: "Score" },
-      { scene: null, text: "Exit" },
+      { scene: 'PlayGame', text: 'Play' },
+      { scene: 'ScoreScene', text: 'Score' },
+      { scene: null, text: 'Exit' },
     ];
   }
 
@@ -19,18 +19,18 @@ class MenuScene extends BaseScene {
     const { textGO } = menuItem;
     textGO.setInteractive();
 
-    textGO.on("pointerover", () => {
-      textGO.setStyle({ fill: "#ff0" });
+    textGO.on('pointerover', () => {
+      textGO.setStyle({ fill: '#ff0' });
     });
 
-    textGO.on("pointerout", () => {
-      textGO.setStyle({ fill: "#fff" });
+    textGO.on('pointerout', () => {
+      textGO.setStyle({ fill: '#fff' });
     });
 
-    textGO.on("pointerup", () => {
+    textGO.on('pointerup', () => {
       this.scene.start(menuItem.scene);
 
-      if (menuItem.text === "Exit") {
+      if (menuItem.text === 'Exit') {
         this.game.destroy(true);
       }
     });

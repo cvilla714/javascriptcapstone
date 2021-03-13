@@ -1,23 +1,22 @@
-/* eslint-disable max-len,import/no-cycle,no-plusplus,no-unused-vars,func-names */
-import Phaser from "phaser";
-import { game, gameOptions } from "./game";
-import pause from "./images/pause.png";
-import BaseScene from "./BaseScene";
-import savingyou from "./saveBestScore";
+import Phaser from 'phaser';
+import { game } from './game';
+import gameOptions from './gameOptions';
+import pause from './images/pause.png';
+import BaseScene from './BaseScene';
+import savingyou from './saveBestScore';
 
 class playGame extends BaseScene {
   constructor(config) {
-    super("PlayGame", config);
+    super('PlayGame', config);
     this.score = 0;
-    this.scoreText = "";
+    this.scoreText = '';
   }
 
   preload() {
-    this.load.image("pause", pause);
+    this.load.image('pause', pause);
   }
 
   create() {
-    super.create();
     this.createScore();
     this.createPause();
     this.listenToEvents();
@@ -62,7 +61,7 @@ class playGame extends BaseScene {
     this.addedPlatforms = 0;
     this.playerJumps = 0;
     this.addPlatform(game.config.width, game.config.width / 2, game.config.height * gameOptions.platformVerticalLimit[1]);
-    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.5, "player");
+    this.player = this.physics.add.sprite(gameOptions.playerStartPosition, game.config.height * 0.5, 'player');
     this.player.setGravityY(gameOptions.playerGravity);
     this.player.setDepth(2);
     this.dying = false;
@@ -71,11 +70,11 @@ class playGame extends BaseScene {
       this.platformGroup,
       function () {
         if (!this.player.anims.isPlaying) {
-          this.player.anims.play("run");
+          this.player.anims.play('run');
         }
       },
       null,
-      this
+      this,
     );
 
     this.physics.add.overlap(
@@ -87,7 +86,7 @@ class playGame extends BaseScene {
           y: coin.y - 100,
           alpha: 0,
           duration: 800,
-          ease: "Cubic.easeOut",
+          ease: 'Cubic.easeOut',
           callbackScope: this,
           onComplete() {
             this.increaseScore();
@@ -98,7 +97,7 @@ class playGame extends BaseScene {
         });
       },
       null,
-      this
+      this,
     );
 
     this.physics.add.overlap(
@@ -113,17 +112,17 @@ class playGame extends BaseScene {
         this.player.setTint(0xee4824);
       },
       null,
-      this
+      this,
     );
 
-    this.input.on("pointerdown", this.jump, this);
-    this.input.keyboard.on("keydown-SPACE", this.jump, this);
+    this.input.on('pointerdown', this.jump, this);
+    this.input.keyboard.on('keydown-SPACE', this.jump, this);
   }
 
   addMountains() {
     const rightmostMountain = this.getRightmostMountain();
     if (rightmostMountain < game.config.width * 2) {
-      const mountain = this.physics.add.sprite(rightmostMountain + Phaser.Math.Between(100, 350), game.config.height + Phaser.Math.Between(0, 100), "mountain");
+      const mountain = this.physics.add.sprite(rightmostMountain + Phaser.Math.Between(100, 350), game.config.height + Phaser.Math.Between(0, 100), 'mountain');
       mountain.setOrigin(0.5, 1);
       mountain.body.setVelocityX(gameOptions.mountainSpeed * -1);
       this.mountainGroup.add(mountain);
@@ -144,7 +143,7 @@ class playGame extends BaseScene {
   }
 
   addPlatform(platformWidth, posX, posY) {
-    this.addedPlatforms++;
+    this.addedPlatforms += 1;
     let platform;
     if (this.platformPool.getLength()) {
       platform = this.platformPool.getFirst();
@@ -157,7 +156,7 @@ class playGame extends BaseScene {
       platform.displayWidth = platformWidth;
       platform.tileScaleX = 1 / platform.scaleX;
     } else {
-      platform = this.add.tileSprite(posX, posY, platformWidth, 32, "platform");
+      platform = this.add.tileSprite(posX, posY, platformWidth, 32, 'platform');
       this.physics.add.existing(platform);
       platform.body.setImmovable(true);
       platform.body.setVelocityX(Phaser.Math.Between(gameOptions.platformSpeedRange[0], gameOptions.platformSpeedRange[1]) * -1);
@@ -176,10 +175,10 @@ class playGame extends BaseScene {
           coin.visible = true;
           this.coinPool.remove(coin);
         } else {
-          const coin = this.physics.add.sprite(posX, posY - 96, "coin");
+          const coin = this.physics.add.sprite(posX, posY - 96, 'coin');
           coin.setImmovable(true);
           coin.setVelocityX(platform.body.velocity.x);
-          coin.anims.play("rotate");
+          coin.anims.play('rotate');
           coin.setDepth(2);
           this.coinGroup.add(coin);
         }
@@ -195,11 +194,11 @@ class playGame extends BaseScene {
           fire.visible = true;
           this.firePool.remove(fire);
         } else {
-          const fire = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 46, "fire");
+          const fire = this.physics.add.sprite(posX - platformWidth / 2 + Phaser.Math.Between(1, platformWidth), posY - 46, 'fire');
           fire.setImmovable(true);
           fire.setVelocityX(platform.body.velocity.x);
           fire.setSize(8, 2, true);
-          fire.anims.play("burn");
+          fire.anims.play('burn');
           fire.setDepth(2);
           this.fireGroup.add(fire);
         }
@@ -213,7 +212,7 @@ class playGame extends BaseScene {
         this.playerJumps = 0;
       }
       this.player.setVelocityY(gameOptions.jumpForce * -1);
-      this.playerJumps++;
+      this.playerJumps += 1;
 
       // stops animation
       this.player.anims.stop();
@@ -226,7 +225,7 @@ class playGame extends BaseScene {
 
   update() {
     if (this.player.y > game.config.height) {
-      this.scene.start("PlayGame");
+      this.scene.start('PlayGame');
       this.saveBestScore();
     }
 
@@ -284,22 +283,22 @@ class playGame extends BaseScene {
 
   createScore() {
     this.score = 0;
-    const bestScore = localStorage.getItem("bestScore");
-    this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: "32px", fill: "#000" });
-    this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: "18px", fill: "#000" });
+    const bestScore = localStorage.getItem('bestScore');
+    this.scoreText = this.add.text(16, 16, `Score: ${0}`, { fontSize: '32px', fill: '#000' });
+    this.add.text(16, 52, `Best score: ${bestScore || 0}`, { fontSize: '18px', fill: '#000' });
   }
 
   createPause() {
-    const pauseButton = this.add.image(46, 76, "pause").setInteractive().setScale(3).setOrigin(0);
-    pauseButton.on("pointerdown", () => {
+    const pauseButton = this.add.image(46, 76, 'pause').setInteractive().setScale(3).setOrigin(0);
+    pauseButton.on('pointerdown', () => {
       this.physics.pause();
       this.scene.pause();
-      this.scene.launch("PauseScene");
+      this.scene.launch('PauseScene');
     });
   }
 
   increaseScore() {
-    this.score++;
+    this.score += 1;
     this.scoreText.setText(`Score: ${this.score}`);
   }
 
@@ -307,7 +306,7 @@ class playGame extends BaseScene {
     if (this.pauseEvent) {
       return;
     }
-    this.pauseEvent = this.events.on("resume", () => {
+    this.pauseEvent = this.events.on('resume', () => {
       this.initialTime = 3;
       this.countDownText = this.add.text(...this.resumeScreenCenter, `Starting in: ${this.initialTime}`, this.fontResume).setOrigin(0);
       this.timedEvent = this.time.addEvent({
@@ -320,10 +319,10 @@ class playGame extends BaseScene {
   }
 
   countDown() {
-    this.initialTime--;
+    this.initialTime -= 1;
     this.countDownText.setText(`Starting in: ${this.initialTime}`);
     if (this.initialTime <= 0) {
-      this.countDownText.setText("");
+      this.countDownText.setText('');
       this.physics.resume();
       this.timedEvent.remove();
     }

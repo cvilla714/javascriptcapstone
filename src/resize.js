@@ -1,9 +1,7 @@
-/* eslint-disable import/no-cycle */
-
-import { game } from "./game";
+import { game } from './game';
 
 const resize = () => {
-  const canvas = document.querySelector("canvas");
+  const canvas = document.querySelector('canvas');
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
   const windowRatio = windowWidth / windowHeight;
