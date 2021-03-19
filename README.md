@@ -5,9 +5,10 @@
 > The project was based on creating a game using Phaser. 
 > It was developed using a custom Webpack template. 
 > The project was created by EMANUELE FERONATO
->  I added extra features such as a new character
->  music, the main menu at beginning of the game, implemented a pause as well 
->  to stop the game and inserted a counter when resuming the game giving 3 seconds for the user to get ready.
+> I added extra features such as a new character , a score and high score,
+> music, the main menu at beginning of the game, implemented a pause as well 
+> to stop the game and inserted a counter when resuming the game giving 3 seconds for the user to get ready.
+> it also has a scoreboard that displays back to the user the best scores from an API.
 
 
 ![screenshot](./app_screenshot.png)
